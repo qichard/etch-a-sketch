@@ -1,13 +1,20 @@
-.content {
+.square {
     width: 30px;
     height: 30px;
-    border: 1px solid black;
+    border: .5px solid black;
+    margin: .5px
+}
+
+.clicked {
+    background-color: black;
 }
 
 .container {
     border: 1px solid red;
+    width: 500px;
 }
 
 .row {
     display: flex;
+    justify-content: center;
 }
