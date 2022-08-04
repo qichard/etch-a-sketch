@@ -1,39 +1,36 @@
 function populateBoard(size) {
-    const container = document.querySelector('.container')
+    let board = document.querySelector('.board')
 
-    while(container.firstChild) {
-        container.removeChild(container.firstChild)
+    while (board.firstChild) {
+        board.removeChild(board.firstChild)
     }
 
-    for (let i = 0; i < size; i++) {
-        const row = document.createElement('div')
-        row.classList.add('row')
-        container.append(row)
+    board.style.gridTemplateColumns = `repeat(${size}, 1fr)`
+    board.style.gridTemplateRows = `repeat(${size}, 1fr)`
 
-        for (let i = 0; i < size; i++) {
-            const square = document.createElement('div')
-            square.classList.add('square')
-            row.appendChild(square)
-            container.appendChild(row)
-        }
+    let numberOfSquares = size * size
+
+    for (let i = 0; i < numberOfSquares; i++) {
+        let square = document.createElement('div')
+        square.style.backgroundColor = 'white'
+        square.classList.add('square')
+        square.addEventListener('mouseover', changeBackgroundColor)
+        board.appendChild(square)
     }
 }
 
 populateBoard(16)
 
+function changeBackgroundColor() {
+    this.style.backgroundColor = 'blue'
+}
+
 function changeSize() {
-    let userInput = window.prompt("Enter how many squares you want on each side: ")
-    if (userInput > 100 || userInput < 2) {
-        userInput = window.prompt("Enter a number less than 100 and greater than 2 again please: ")
+    let input = prompt('Enter a new size:')
+    if (input < 100 && input >= 3) {
+        populateBoard(input)
     }
-    populateBoard(userInput)
 }
 
-changeSize()
-
-const targetSquares = document.querySelector('.container').querySelectorAll('.square')
-for (const targetSquare of targetSquares) {
-    targetSquare.addEventListener('mouseenter', () => {
-        targetSquare.classList.add('clicked')
-    })
-}
+const sizeButton = document.querySelector('.sizeButton')
+sizeButton.addEventListener('click', changeSize)

@@ -1,8 +1,9 @@
-.square {
-    width: 30px;
-    height: 30px;
+/* .square {
+    width: auto;
+    height: auto;
     border: .5px solid black;
-    margin: .5px
+    margin: .5px;
+    flex-grow: 1;
 }
 
 .clicked {
@@ -12,9 +13,23 @@
 .container {
     border: 1px solid red;
     width: 500px;
+    height: 500px;
+
 }
 
 .row {
     display: flex;
     justify-content: center;
+} */
+
+
+.board {
+    height: 500px;
+    width: 500px;
+    display: grid;
+    border: 1px solid gray;
+}
+
+.square {
+    border: .1px solid gray;
 }
